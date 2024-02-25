@@ -1,0 +1,76 @@
+import { Button, VerticalBox, LineEdit, GridBox, HorizontalBox } from "std-widgets.slint";
+
+export component AppWindow inherits Window {
+    
+    in-out property <string> month_name;
+    callback save_file();
+    
+    GridBox {
+        padding: 85px;
+        spacing: 30px;
+    
+        Row {
+            Text {
+                text: "Welcome to financer";
+                horizontal-alignment: center;
+                font-size: 24px;
+                font-weight: 900;
+            }
+        }
+        
+        Rectangle {
+            horizontal-stretch: 1;
+
+            LineEdit {
+                horizontal-alignment: right;
+                x:  i-time-suffix.x - 5px - self.width;
+                placeholder-text: "Month";
+                font-size: 16px;
+                height: 35px;
+            }
+
+            i-time-suffix := Button {
+                x: parent.width - self.width;
+                horizontal-stretch: 0;
+                primary: true;
+                height: 35px;
+                text: "Save";
+            }
+        }
+
+        Row {
+            LineEdit {
+                horizontal-alignment: center;
+                font-size: 16px;
+                placeholder-text: "Enter your income amount";
+                height: 35px;
+            }
+            
+            Button {
+                text: "Calculate";
+                primary: true;
+                height: 35px;
+            }
+        }
+
+        Row {
+            
+            Rectangle {
+                colspan: 2;
+                height: 100px;
+                background: #faeded;
+                border-radius: 4px;
+                Text {
+                    color: black;
+                    font-size: 16px;
+                    font-weight: 500;
+                    text: root.results;
+                }
+            }
+
+        }
+
+        
+
+    }
+}
